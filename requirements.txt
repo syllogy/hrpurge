@@ -1,5 +1,4 @@
-asciimatics==1.12.0
+asciimatics==1.12.*
 coloredlogs==15.0
-python-json-logger==2.0.1
-rich==9.13.0
-semantic_version==2.8.5
+python-json-logger==2.0.*
+rich==9.13.*

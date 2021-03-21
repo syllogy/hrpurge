@@ -18,11 +18,10 @@ SHORT_DESCRIPTION = """
 A CLI tool that help you delete old releases of a helm chart deployed in K8S.""".strip()
 
 DEPENDENCIES = [
-    "art",
+    "asciimatics",
     "coloredlogs",
     "python-json-logger",
     "rich",
-    "semantic_version",
 ]
 
 URL = "https://github.com/lpmatos/hrpurge"

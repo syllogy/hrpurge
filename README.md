@@ -2,7 +2,7 @@
   <img alt="logo" src="https://media2.giphy.com/media/l161uJh2ZVzgc/giphy.gif" width="350px" float="center"/>
 </p>
 
-<h3 align="center">☠️ Helm Release Purge ☠️</h3>
+<h2 align="center">☠️ Helm Release Purge ☠️</h2>
 
 <div align="center">
 
@@ -26,7 +26,6 @@
 <p align="center">
   <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#docs">Docs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#author">Author</a>
 </p>
 
@@ -74,7 +73,6 @@ This shareable configuration use the following dependencies:
 
 For more information, access the [CONTRIBUTING](CONTRIBUTING.md) file.
 
----
 
 ## ➤ Development with Docker
 
@@ -113,25 +111,17 @@ winpty docker.exe container run -it --rm <IMAGE_NAME> <COMMAND>
 </p>
 </details>
 
----
-
 ## ➤ Contributing
 
-Contributions, issues and feature requests are welcome. Feel free to check issues page if you want to contribute. [Check the contributing guide](CONTRIBUTING.md).
-
----
+If you would like to run the project locally to contribute, please refer to the CONTRIBUTING file for details 👓. It would be awesome to have some help with content and code review. Thank you! 😄
 
 ## ➤ License <a name = "license"></a>
 
 This repository is released under the [MIT license](https://opensource.org/licenses/MIT). In short, this means you are free to use this software in any personal, open-source or commercial projects. Attribution is optional but appreciated.
 
----
-
 ## ➤ Versioning <a name = "versioning"></a>
 
 [**CHANGELOG.md**](CHANGELOG.md)
-
----
 
 ## ➤ Author <a name = "author"></a>
 
@@ -147,13 +137,9 @@ Hey!! If you like this project or if you find some bugs feel free to contact me 
 > * LinkedIn: [@luccapessoa](https://www.linkedin.com/in/luccapessoa/)
 >
 
----
-
 ## ➤ Troubleshooting <a name = "troubleshooting"></a>
 
 This is just a personal project created for study/demonstration purposes and to simplify my working life, it may or may not be a good fit for your project!
-
----
 
 ## ➤ Show your support <a name = "show-your-support"></a>
 
@@ -161,4 +147,4 @@ Give a ⭐️ if this project helped you!
 
 ---
 
-Made with 💜 by [me](https://github.com/lpmatos) :wave: inspired on [readme-md-generator](https://github.com/kefranabg/readme-md-generator)
+Made with 💜 by [me](https://github.com/lpmatos) 👋 inspired on [readme-md-generator](https://github.com/kefranabg/readme-md-generator)
