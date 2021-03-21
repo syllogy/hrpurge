@@ -87,6 +87,12 @@ This shareable configuration use the following dependencies:
 
 For more information, access the [CONTRIBUTING](CONTRIBUTING.md) file.
 
+## ➤ Commands
+
+<p align="left">
+  <img alt="version" src="./assets/version.png" width="600px" float="center"/>
+</p>
+
 ## ➤ Development with Docker
 
 
