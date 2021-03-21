@@ -72,10 +72,10 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            Hey! 🙌🙌🙌
+            🤖 Github action notify 🤖
 
-            The ${{ github.event_name }} event triggered second step:
+            The ${{ github.event_name }} event triggered:
 
-            🤖 Git Ref: ${{ github.ref }}
-            🤖 Git Commit Hash: ${{ github.sha }}
-            🤖 Commit Message: ${{ github.event.head_commit.message }}
+            - Git Ref: ${{ github.ref }}
+            - Git Commit Hash: ${{ github.sha }}
+            - Commit Message: ${{ github.event.head_commit.message }}
