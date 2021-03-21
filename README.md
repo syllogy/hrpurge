@@ -93,6 +93,10 @@ For more information, access the [CONTRIBUTING](CONTRIBUTING.md) file.
   <img alt="version" src="./assets/version.png" float="center"/>
 </p>
 
+<p align="left">
+  <img alt="cli" src="./assets/cli.png" float="center"/>
+</p>
+
 ## ➤ Development with Docker
 
 
