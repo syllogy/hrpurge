@@ -7,8 +7,8 @@ Hello there, `fellow coders` 🤖👋! I hope this CLI can help you with somethi
 
 # Information
 
-- Author:   Lucca Pessoa
+- Author:   Lucca Pessoa da Silva Matos
 - Email:    luccapsm@gmail.com
-- GitHub:   https://git.stefanini.io/lpmatos
-- GitLab:   https://git.stefanini.io/lpmatos
+- GitHub:   https://github.com/lpmatos
+- GitLab:   https://gitlab.com/lpmatos
 """
