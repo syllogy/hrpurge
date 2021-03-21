@@ -72,9 +72,10 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            The ${{ github.event_name }} event triggered second step.
-            show the github variable ref: ${{ github.ref }}
-            show the github variable commit: ${{ github.sha }}
-            show the github variable ref: {{ commit.ref }}
-            show the github variable commit: {{ commit.sha }}
-            Commit Message: ${{ github.event.head_commit.message }}
+            Hey! 🙌🙌🙌
+
+            The ${{ github.event_name }} event triggered second step:
+
+            🤖 Git Ref: ${{ github.ref }}
+            🤖 Git Commit Hash: ${{ github.sha }}
+            🤖 Commit Message: ${{ github.event.head_commit.message }}
