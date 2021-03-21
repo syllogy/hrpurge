@@ -8,29 +8,19 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  gitleaks:
-    name: Secret Detection
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: Run gitleaks secrets scan action
+      - name: Secret Dection
         uses: zricethezav/gitleaks-action@master
         with:
           config-path: .gitleaks.toml
-
-  sonarcloud:
-    name: Sonar Cloud
-    runs-on: ubuntu-latest
-    needs: gitleaks
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
@@ -38,45 +28,32 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  dive:
-    runs-on: ubuntu-latest
-    name: Analyze image efficiency
-    needs: [gitleaks, sonarcloud]
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+    needs: test
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
-      - name: Build image
-        run: docker build -t sample:latest .
-
-      - name: Dive
-        uses: yuichielectric/dive-action@0.0.4
-        with:
-          image: "sample:latest"
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Hadolint
         uses: brpaz/hadolint-action@v1.3.1
         with:
           dockerfile: Dockerfile
 
-  build:
-    name: Build
-    runs-on: ubuntu-18.04
-    needs: dive
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Build an image from Dockerfile
+      - name: Build Dockerfile
         run: |
           docker build -t docker.io/lpmatos/hrpurge/hrpurge:${{ github.sha }} .
 
-      - name: Run Trivy vulnerability scanner
+      - name: Dive
+        uses: yuichielectric/dive-action@0.0.4
+        with:
+          image: "docker.io/lpmatos/hrpurge/hrpurge:${{ github.sha }}"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: "docker.io/lpmatos/hrpurge/hrpurge:${{ github.sha }}"
@@ -84,12 +61,12 @@ jobs:
           template: "@/contrib/sarif.tpl"
           output: "trivy-results.sarif"
 
-      - name: Upload Trivy scan results to GitHub Security tab
+      - name: Upload Trivy Scan Results to GitHub Security Tab
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: "trivy-results.sarif"
 
-      - name: send custom message with args
+      - name: Send Custom Message to Telegram
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
