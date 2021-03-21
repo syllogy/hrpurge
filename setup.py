@@ -19,14 +19,10 @@ A CLI tool that help you delete old releases of a helm chart deployed in K8S."""
 
 DEPENDENCIES = [
     "art",
-    "colorama",
     "coloredlogs",
-    "fire",
-    "pyfiglet",
     "python-json-logger",
     "rich",
-    "termcolor",
-    "tqdm",
+    "semantic_version",
 ]
 
 URL = "https://github.com/lpmatos/hrpurge"
