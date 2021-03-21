@@ -1,6 +1,0 @@
-asciimatics==1.12.*
-coloredlogs==15.0
-python-json-logger==2.0.*
-rich==9.13.*
-
-pylint==2.7.2

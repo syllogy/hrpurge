@@ -9,7 +9,7 @@ from rich.markdown import Markdown
 
 from hrpurge.log import Log
 from hrpurge.settings import Config
-from hrpurge.constants import WELCOME
+from hrpurge.const import WELCOME
 from hrpurge.animation import Animation
 from hrpurge.cli_version import show_version
 

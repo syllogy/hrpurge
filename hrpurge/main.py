@@ -11,6 +11,7 @@ Options:
   -h --help                     show this help message and exit
   --version                     show version and exit
   -q --quiet                    report only errors
+  -i --interative
   --kubeconfig=<kubeconfig>     path to the kubeconfig file [default: ~/.kube/config]
   --kubecontext=<kubecontext>   name of the kubeconfig context to use
 

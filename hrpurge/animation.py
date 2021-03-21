@@ -20,7 +20,7 @@ class Animation():
                     int(screen.height / 2 - 8)),
                 Cycle(
                     screen,
-                    FigletText("EXECUTION FINISHED!", font='big'),
+                    FigletText("EXECUTION - FINISHED", font='big'),
                     int(screen.height / 2 + 3)),
                 Stars(screen, 200)
             ]

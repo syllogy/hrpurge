@@ -1,11 +1,16 @@
 FROM python:3.9.2-slim-buster
 
-WORKDIR /app
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+RUN apt-get update && apt-get clean && \
+    apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-COPY ./hrpurge ./hrpurge
-COPY ./setup.py .
-COPY ./requirements.txt .
+WORKDIR /usr/src
 
-RUN pip install -e .
+COPY . hrpurge/
+
+RUN pip3 install --no-cache-dir -e ./hrpurge && \
+    python3 -m compileall hrpurge/hrpurge
 
 CMD [ "hrpurge" ]
