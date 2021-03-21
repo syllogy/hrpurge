@@ -7,30 +7,85 @@ from typing import NoReturn, Dict
 from rich.console import Console
 from rich.markdown import Markdown
 
-from hrpurge.log import Log
-from hrpurge.settings import Config
-from hrpurge.const import WELCOME
-from hrpurge.animation import Animation
+from bullet import Bullet, VerticalPrompt, Check, Input, YesNo, Numbers
+from bullet import colors
+
+from hrpurge.setup import CONFIG, ANIMATION
 from hrpurge.cli_version import show_version
-
-animation = Animation()
-log = Log("INFO", "rich", "logger").logger
-config = Config()
-
-
-def header() -> NoReturn:
-    console = Console()
-    markdown = Markdown(WELCOME)
-    console.print(markdown)
-    print()
+from hrpurge.const import MARKDOWN_WELCOME
 
 
 def cli(information: Dict) -> NoReturn:
-    header()
+    console = Console()
+    markdown = Markdown(MARKDOWN_WELCOME)
+    console.print(markdown)
+    print()
 
     if information["--version"]:
         show_version()
         sys.exit(1)
+
+    if information["--interactive"]:
+        console = Console()
+        markdown = Markdown("# Interactive")
+        console.print(markdown)
+        print()
+
+        promt = VerticalPrompt(
+            [
+                YesNo("Are you a student? ",
+                      word_color=colors.foreground["yellow"]),
+                YesNo("Are you a good student? ",
+                      default='y',
+                      word_color=colors.foreground["yellow"]),
+                Input("Who are you? ",
+                      default="Batman",
+                      word_color=colors.foreground["yellow"]),
+                Input("Really? ",
+                      word_color=colors.foreground["yellow"]),
+                Numbers("How old are you? ",
+                        word_color=colors.foreground["yellow"],
+                        type=int),
+                Bullet("What is your favorite programming language? ",
+                       choices=["C++", "Python", "Javascript", "Not here!"],
+                       bullet=" >",
+                       margin=2,
+                       bullet_color=colors.bright(colors.foreground["cyan"]),
+                       background_color=colors.background["black"],
+                       background_on_switch=colors.background["black"],
+                       word_color=colors.foreground["white"],
+                       word_on_switch=colors.foreground["white"]
+                       ),
+                Check("What food do you like? ",
+                      choices=["🍣   Sushi",
+                               "🍜   Ramen",
+                               "🌭   Hotdogs",
+                               "🍔   Hamburgers",
+                               "🍕   Pizza",
+                               "🍝   Spaghetti",
+                               "🍰   Cakes",
+                               "🍩   Donuts"],
+                      check=" √",
+                      margin=2,
+                      check_color=colors.bright(colors.foreground["red"]),
+                      check_on_switch=colors.bright(colors.foreground["red"]),
+                      background_color=colors.background["black"],
+                      background_on_switch=colors.background["white"],
+                      word_color=colors.foreground["white"],
+                      word_on_switch=colors.foreground["black"]
+                      ),
+            ]
+        )
+        print('\n')
+        result = promt.launch()
+        promt.summarize()
+        print(result)
+        print()
+
+    console = Console()
+    markdown = Markdown("# Work")
+    console.print(markdown)
+    print()
 
     console = Console()
     tasks = [f"task {n}" for n in range(1, 11)]
@@ -41,7 +96,7 @@ def cli(information: Dict) -> NoReturn:
             console.log(f"{task} complete")
         print()
 
-    if config.get_env("CI"):
+    if CONFIG.get_env("CI"):
         print("Done! Finish!")
     else:
-        animation.finish()
+        ANIMATION.finish()

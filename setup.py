@@ -19,6 +19,7 @@ A CLI tool that help you delete old releases of a helm chart deployed in K8S."""
 
 DEPENDENCIES = [
     "arrow==1.0.3",
+    "bullet==2.2.0",
     "asciimatics==1.12.0",
     "coloredlogs==15.0",
     "docopt==0.6.2",

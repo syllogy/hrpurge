@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-WELCOME = """
+MARKDOWN_WELCOME = """
 # Welcome
 
 Hello there, `fellow coders` 🤖👋! I hope this CLI can help you with something.
@@ -11,4 +11,8 @@ Hello there, `fellow coders` 🤖👋! I hope this CLI can help you with somethi
 - Email:    luccapsm@gmail.com
 - GitHub:   https://github.com/lpmatos
 - GitLab:   https://gitlab.com/lpmatos
+"""
+
+MARKDOWN_INTERACTIVE = """
+# Interactive
 """
