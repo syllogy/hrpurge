@@ -54,6 +54,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trivy Vulnerability Scanner
+        id: trivy
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: "docker.io/lpmatos/hrpurge/hrpurge:${{ github.sha }}"
@@ -66,7 +67,8 @@ jobs:
         with:
           sarif_file: "trivy-results.sarif"
 
-      - name: Send Custom Message to Telegram
+      - name: Send Success Custom Message to Telegram
+        if: ${{ success() }}
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
@@ -74,7 +76,22 @@ jobs:
           message: |
             🤖 Github action notify 🤖
 
-            The ${{ github.event_name }} event triggered:
+            ✅ Sucess ${{ github.event_name }} event triggered:
+
+            - Git Ref: ${{ github.ref }}
+            - Git Commit Hash: ${{ github.sha }}
+            - Commit Message: ${{ github.event.head_commit.message }}
+
+      - name: Send Failure Custom Message to Telegram
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🤖 Github action notify 🤖
+
+            ❌ Failure ${{ github.event_name }} event triggered:
 
             - Git Ref: ${{ github.ref }}
             - Git Commit Hash: ${{ github.sha }}
