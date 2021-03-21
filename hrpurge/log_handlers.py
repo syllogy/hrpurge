@@ -2,10 +2,11 @@
 
 import sys
 import logging
-from abc import ABCMeta, abstractmethod
 from typing import NoReturn, Text
-from pythonjsonlogger import jsonlogger
+from abc import ABCMeta, abstractmethod
+
 from rich.logging import RichHandler
+from pythonjsonlogger import jsonlogger
 
 
 class StrategyHandler(metaclass=ABCMeta):

@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 
-from asciimatics.effects import Cycle, Stars
-from asciimatics.renderers import FigletText
+from typing import NoReturn
+
 from asciimatics.scene import Scene
 from asciimatics.screen import ManagedScreen
+from asciimatics.effects import Cycle, Stars
+from asciimatics.renderers import FigletText
 
 
 class Animation():
 
     @staticmethod
-    def finish():
+    def finish() -> NoReturn:
         with ManagedScreen() as screen:
             effects = [
                 Cycle(

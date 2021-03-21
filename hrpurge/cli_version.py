@@ -1,11 +1,15 @@
+# -*- coding: utf-8 -*-
+
+from typing import NoReturn
+
 import arrow
-from rich.console import Console
 from rich.table import Table
+from rich.console import Console
 
 from hrpurge.__init__ import __version__
 
 
-def show_version():
+def show_version() -> NoReturn:
     console = Console()
     table = Table(show_header=True, header_style="bold blue")
     table.add_column("NAME", style="dim", width=8,

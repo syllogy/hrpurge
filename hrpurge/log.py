@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from dataclasses import dataclass
 import logging
 from typing import Callable
+from dataclasses import dataclass
+
 import coloredlogs
 
 from hrpurge.log_handlers import BaseStreamHandler, BaseRichHandler, ContextHandler
