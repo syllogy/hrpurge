@@ -7,7 +7,7 @@
     "release": "npx semantic-release --no-ci",
     "release-debug": "npx semantic-release --dry-run --no-ci --debug",
     "docker-build-test": "docker image build -t teste .",
-    "docker-inspect": "npm run docker-build-test && dive teste --ci"
+    "docker-inspect": "npm run docker-build-test && dive teste --config .dive-ci.yml --ci"
   },
   "commitlint": {
     "extends": [
