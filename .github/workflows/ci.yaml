@@ -1,4 +1,4 @@
-name: build
+name: "CI"
 
 on:
   push:
@@ -7,6 +7,24 @@ on:
   pull_request:
 
 jobs:
+  dive:
+    runs-on: ubuntu-latest
+    name: Analyze image efficiency
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build image
+        run: docker build -t sample:latest .
+      - name: Dive
+        uses: yuichielectric/dive-action@0.0.4
+        with:
+          image: "sample:latest"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Hadolint
+        uses: brpaz/hadolint-action@v1.2.1
+        with:
+          dockerfile: Dockerfile
+
   build:
     name: Build
     runs-on: ubuntu-18.04
