@@ -90,7 +90,7 @@ For more information, access the [CONTRIBUTING](CONTRIBUTING.md) file.
 ## ➤ Commands
 
 <p align="left">
-  <img alt="version" src="./assets/version.png" width="600px" float="center"/>
+  <img alt="version" src="./assets/version.png" float="center"/>
 </p>
 
 ## ➤ Development with Docker
