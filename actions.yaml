@@ -1,0 +1,48 @@
+actions:
+  one-namespace:
+    - name: Deletar todas as Helm Releases de uma namespace específica.
+      params:
+        - all-releases
+        - namespace=demo
+    - name: Deletar todas as Helm Releases de uma namespace dado um filtro de data
+      params:
+        - all-releases
+        - namespace=demo
+        - older-than=15 days ago
+    - name: Deletar todas as Helm Releases de uma namespace dado um filtro de nome
+      params:
+        - all-releases
+        - namespace=demo
+        - helm-release-filter=^feature-.+
+
+  set-namespaces:
+    - name: Deletar todas as Helm Releases de um conjunto de namespaces filtradas pelo nome
+      params:
+        - all-releases
+        - namespace-filter=^feature-.+
+    - name: Deletar todas as Helm Releases de um conjunto de namespaces filtradas pelo nome, dado um filtro de data
+      params:
+        - all-releases
+        - namespace-filter=^feature-.+
+        - older-than=15 days ago
+    - name: Deletar todas as Helm Releases de um conjunto de namespaces filtradas pelo nome, dado um filtro de nome
+      params:
+        - all-releases
+        - namespace-filter=^feature-.+
+        - helm-release-filter=^feature-.+
+
+  all-namespaces:
+    - name: Deletar todas as Helm Releases de todas as namespaces
+      params:
+        - all-releases
+        - all-namespaces
+    - name: Deletar todas as Helm Releases de todas as namespaces dado um filtro de data
+      params:
+        - all-releases
+        - all-namespaces
+        - older-than=15 days ago
+    - name: Deletar todas as Helm Releases de todas as namespaces dado um filtro de nome
+      params:
+        - all-releases
+        - all-namespaces
+        - helm-release-filter=^feature-.+
