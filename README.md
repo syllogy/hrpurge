@@ -57,6 +57,12 @@ For more information, access the [CONTRIBUTING](CONTRIBUTING.md) file.
 
 ### Installing
 
+To this project setup:
+
+```bash
+pip install .
+```
+
 To install support dependencies that handle commit and release standards, run the command:
 
 ```bash
@@ -65,14 +71,21 @@ npm install
 
 This shareable configuration use the following dependencies:
 
-- [`@semantic-release/git`](https://github.com/semantic-release/git)
-- [`@semantic-release/github`](https://github.com/semantic-release/github)
-- [`@semantic-release/changelog`](https://github.com/semantic-release/changelog)
-- [`@semantic-release/commit-analyzer`](https://github.com/semantic-release/commit-analyzer)
-- [`@semantic-release/release-notes-generator`](https://github.com/semantic-release/release-notes-generator)
+- ⮚ [Semantic Release](https://github.com/semantic-release) + Plugins de configuração
+  - [`semantic-release`](https://github.com/semantic-release/semantic-release)
+  - [`@semantic-release/git`](https://github.com/semantic-release/git)
+  - [`@semantic-release/github`](https://github.com/semantic-release/github)
+  - [`@semantic-release/changelog`](https://github.com/semantic-release/changelog)
+  - [`@semantic-release/commit-analyzer`](https://github.com/semantic-release/commit-analyzer)
+  - [`@semantic-release/release-notes-generator`](https://github.com/semantic-release/release-notes-generator)
+- ⮚ [Commit Lint](https://github.com/conventional-changelog/commitlint) usando o [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+  - [`commitizen`](https://github.com/commitizen/cz-cli)
+  - [`@commitlint/cli`](https://github.com/conventional-changelog/commitlint)
+  - [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint)
+- ⮚ Git Hooks com [Husky](https://github.com/typicode/husky).
+  - [`husky`](https://github.com/semantic-release/git)
 
 For more information, access the [CONTRIBUTING](CONTRIBUTING.md) file.
-
 
 ## ➤ Development with Docker
 
