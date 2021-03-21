@@ -7,19 +7,39 @@ on:
   pull_request:
 
 jobs:
+  gitleaks:
+    name: Secret Detection
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Run gitleaks secrets scan action
+        uses: zricethezav/gitleaks-action@master
+        with:
+          config-path: .gitleaks.toml
+
   dive:
     runs-on: ubuntu-latest
     name: Analyze image efficiency
+    needs: gitleaks
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Build image
         run: docker build -t sample:latest .
+
       - name: Dive
         uses: yuichielectric/dive-action@0.0.4
         with:
           image: "sample:latest"
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Hadolint
         uses: brpaz/hadolint-action@v1.2.1
         with:
@@ -30,8 +50,10 @@ jobs:
     runs-on: ubuntu-18.04
     needs: dive
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Build an image from Dockerfile
         run: |
