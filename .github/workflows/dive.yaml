@@ -16,3 +16,7 @@ jobs:
         with:
           image: "sample:latest"
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Hadolint
+        uses: brpaz/hadolint-action@v1.2.1
+        with:
+          dockerfile: Dockerfile
