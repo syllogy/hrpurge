@@ -12,7 +12,7 @@ from hrpurge.log_handlers import (BaseRichHandler, BaseStreamHandler,
 
 
 class SingletonLogger(type):
-    _instances: Dict[Any, Any]
+    _instances: Dict[Any, Any] = {}
 
     def __call__(cls, *args, **kwargs) -> Any:
         if cls not in cls._instances:
