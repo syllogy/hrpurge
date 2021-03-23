@@ -59,6 +59,36 @@ jobs:
           extra-mypy-options: ""
           extra-isort-options: ""
 
+      - name: Send Success Custom Message to Telegram
+        if: ${{ success() }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🤖 Github action notify 🤖
+
+            ✅ Sucess ${{ github.event_name }} event triggered:
+
+            - Git Ref: ${{ github.ref }}
+            - Git Commit Hash: ${{ github.sha }}
+            - Commit Message: ${{ github.event.head_commit.message }}
+
+      - name: Send Failure Custom Message to Telegram
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            🤖 Github action notify 🤖
+
+            ❌ Failure ${{ github.event_name }} event triggered:
+
+            - Git Ref: ${{ github.ref }}
+            - Git Commit Hash: ${{ github.sha }}
+            - Commit Message: ${{ github.event.head_commit.message }}
+
   build:
     name: Build
     runs-on: ubuntu-20.04
