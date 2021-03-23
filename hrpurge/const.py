@@ -16,3 +16,5 @@ Hello there, `fellow coders` 🤖👋! I hope this CLI can help you with somethi
 MARKDOWN_INTERACTIVE = """
 # Interactive
 """
+
+LOG_FORMAT = "%(levelname)s - %(asctime)s - %(message)s - %(funcName)s"

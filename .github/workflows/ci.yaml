@@ -5,15 +5,19 @@ on:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize, reopened]
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Check out code from GitHub
+        uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 0
 
@@ -28,9 +32,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+      - name: Python code style and formatter
+        uses: ricardochaves/python-lint@v1.3.0
+        with:
+          python-root-list: "hrpurge"
+          use-pylint: true
+          use-pycodestyle: false
+          use-flake8: true
+          use-black: true
+          use-mypy: false
+          use-isort: false
+          extra-pylint-options: ""
+          extra-pycodestyle-options: ""
+          extra-flake8-options: ""
+          extra-black-options: "-l 79"
+          extra-mypy-options: ""
+          extra-isort-options: ""
+
   build:
     name: Build
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     needs: test
     steps:
       - name: Checkout Repository

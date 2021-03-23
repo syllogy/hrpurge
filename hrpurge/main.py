@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# flake8: noqa: E501
 """
 Description: A CLI tool that help you delete old releases of a helm chart deployed in K8S.
 
@@ -23,12 +24,13 @@ Environment variables:
 | $KUBECONFIG      | set an alternative Kubernetes configuration file (default "~/.kube/config") |
 """
 
+from typing import NoReturn
+
 from docopt import docopt
 
 from hrpurge.cli import cli
-from hrpurge import __version__
 
 
-def main():
+def main() -> NoReturn:
     arguments = dict(docopt(__doc__))
     cli(arguments)

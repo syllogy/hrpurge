@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from os import environ
-from typing import Text, Type
+from typing import Text
 
 
 class Config:
-
     @staticmethod
-    def get_env(
-        env: Type[Text],
-        default: Type[Text] = None
-    ) -> Text:
+    def get_env(env: Text, default: Text = "") -> Text:
         return environ.get(env, default)

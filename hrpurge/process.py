@@ -1,33 +1,30 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import subprocess
-from typing import Text, Type, Tuple
+import sys
+from typing import Text, Tuple
 
 
 class Process:
-
     @staticmethod
-    def run_command(cmd: Type[Text]) -> Tuple:
+    def run_command(cmd: Text) -> Tuple[Text, Text]:
         try:
-            if not isinstance(cmd, str):
-                sys.stderr.write(
-                    f"We spec a string value, not {type(cmd)}")
-                sys.exit(1)
             process = subprocess.Popen(
                 cmd,
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
                 shell=True,
-                universal_newlines=True
+                universal_newlines=True,
             )
             output, errors = process.communicate()
             if process.returncode != 0:
                 sys.stderr.write(
-                    f"Run command failed - status process returncode - {process.returncode}")
+                    f"Run command failed - returncode - {process.returncode}"
+                )
                 sys.exit(1)
             return (output, errors)
         except subprocess.CalledProcessError as error:
             sys.stderr.write(
-                f"Subprocess error when run the command {cmd} - {error}")
+                f"Subprocess error when run the command {cmd} - {error}"
+            )
             sys.exit(1)
