@@ -4,10 +4,6 @@ from setuptools import find_packages, setup
 
 from hrpurge import __version__
 
-# ==============================================================================
-# CONSTANTS
-# ==============================================================================
-
 NAME = "hrpurge"
 
 LONG_DESCRIPTION = """
@@ -33,11 +29,6 @@ EMAIL = "luccapsm@gmail.com"
 AUTHOR = "Lucca Pessoa da Silva Matos"
 REQUIRES_PYTHON = ">=3.6.0"
 VERSION = __version__
-
-
-# ==============================================================================
-# BUILD PACKAGE
-# ==============================================================================
 
 setup(
     name=NAME,

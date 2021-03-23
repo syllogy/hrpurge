@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from hrpurge.animation import Animation
-from hrpurge.log import Log
 from hrpurge.settings import Config
+from hrpurge.date import Date
 
-LOG = Log("INFO", "rich", "logger").logger
 CONFIG = Config()
 ANIMATION = Animation()
+DATE = Date()

@@ -18,3 +18,5 @@ MARKDOWN_INTERACTIVE = """
 """
 
 LOG_FORMAT = "%(levelname)s - %(asctime)s - %(message)s - %(funcName)s"
+
+DATA_FORMAT = "YYYY-MM-DD HH:mm:ss"
