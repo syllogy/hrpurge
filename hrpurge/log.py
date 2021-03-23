@@ -7,8 +7,11 @@ from typing import Any, Dict, NoReturn, Text
 import coloredlogs
 
 from hrpurge.const import LOG_FORMAT
-from hrpurge.log_handlers import (BaseRichHandler, BaseStreamHandler,
-                                  ContextHandler)
+from hrpurge.log_handlers import (
+    BaseRichHandler,
+    BaseStreamHandler,
+    ContextHandler,
+)
 
 
 class SingletonLogger(type):

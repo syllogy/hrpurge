@@ -8,9 +8,9 @@ from bullet import Input, Numbers, VerticalPrompt, YesNo, colors
 from rich.console import Console
 from rich.markdown import Markdown
 
-from hrpurge.log import Log
 from hrpurge.cli_version import show_version
 from hrpurge.const import MARKDOWN_WELCOME
+from hrpurge.log import Log
 from hrpurge.setup import ANIMATION, CONFIG
 
 

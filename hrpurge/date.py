@@ -3,8 +3,7 @@ import arrow
 from hrpurge.const import DATA_FORMAT
 
 
-class Date():
-
+class Date:
     def __init__(self) -> None:
         self._data_format = DATA_FORMAT
 
