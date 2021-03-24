@@ -19,6 +19,7 @@ def cli(information: Dict) -> NoReturn:
     markdown = Markdown(MARKDOWN_WELCOME)
     console.print(markdown)
     print()
+    enabel_ci = False
 
     if information["-v"] or information["--version"]:
         show_version()

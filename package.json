@@ -6,8 +6,8 @@
     "secrets": "gitleaks --verbose -c .gitleaks.toml",
     "release": "npx semantic-release --no-ci",
     "release-debug": "npx semantic-release --dry-run --no-ci --debug",
-    "docker-build-test": "docker image build -t teste .",
-    "docker-inspect": "npm run docker-build-test && dive teste --config .dive-ci.yml --ci"
+    "docker-inspect": "docker image build -t teste:1.0.0 . && dive teste:1.0.0 --config .dive-ci.yml --ci",
+    "docker-scan": "docker image build -t teste:1.0.0 . && trivy image teste:1.0.0"
   },
   "commitlint": {
     "extends": [
