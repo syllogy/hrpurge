@@ -35,17 +35,25 @@ COPY --from=helm /helm/linux-amd64/[ht]* ./usr/bin/
 
 FROM python:$PYTHON_VERSION
 
+ENV HOME=/home/app/
+
 COPY --from=stage [ "/stage/", "/" ]
 
-WORKDIR /usr/src
+SHELL ["/bin/sh", "-o", "pipefail", "-c"]
+RUN apk add --no-cache jpeg-dev zlib-dev tini && \
+    adduser -D python && mkdir $HOME && chown -R python:python $HOME
+
+WORKDIR $HOME
+
+ENTRYPOINT ["/tini", "--"]
 
 COPY [ ".", "hrpurge/" ]
 
-SHELL ["/bin/sh", "-o", "pipefail", "-c"]
 RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers && \
-    apk add --no-cache jpeg-dev zlib-dev && \
-    pip3 install --no-cache-dir -e ./hrpurge && \
-    python3 -m compileall hrpurge/hrpurge && \
+    pip install --no-cache-dir -e ./hrpurge && \
+    python -m compileall hrpurge/hrpurge && \
     apk del .tmp
+
+USER python
 
 CMD [ "hrpurge" ]
